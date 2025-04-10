@@ -1,0 +1,14 @@
+CREATE TABLE IF NOT EXISTS users (
+  id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+  login TEXT NOT NULL UNIQUE,
+  password TEXT NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS tokens (
+  id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+  user_id INTEGER NOT NULL,
+  hash TEXT NOT NULL UNIQUE,
+  created_at TEXT NOT NULL DEFAULT (datetime('now')),
+  expires_at TEXT NOT NULL DEFAULT (datetime('now', '+6 hour')),
+  FOREIGN KEY (user_id) REFERENCES users (id)
+);

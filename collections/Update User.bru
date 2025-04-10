@@ -1,0 +1,21 @@
+meta {
+  name: Update User
+  type: http
+  seq: 5
+}
+
+put {
+  url: http://localhost:3000/users/self
+  body: json
+  auth: none
+}
+
+headers {
+  authorization: 1:d90rtRwNyCDMMARNmeREQB54386kC95g0h0OKLYADaOdjR9rE0nrUxeR89mDpCdyRd0HuwPnIpyMgmPAnpD0CZ3zfH7ou6dhadbC
+}
+
+body:json {
+  {
+    "password": "doge"
+  }
+}
