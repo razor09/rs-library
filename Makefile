@@ -6,6 +6,8 @@ lint:
 	cargo fmt --all
 build:
 	cargo build --release
+check:
+	cargo check
 update:
 	cargo update
 play:
