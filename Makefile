@@ -9,7 +9,7 @@ build:
 check:
 	cargo check
 update:
-	cargo update
+	rustup update && cargo update
 play:
 	target/release/rs-library
 hook:
