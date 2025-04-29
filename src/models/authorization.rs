@@ -31,12 +31,12 @@ impl Token {
         };
     }
 
-    pub fn generate_hash(length: usize) -> String {
+    pub fn generate_hash() -> String {
         const CHARS: &[u8] = b"0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        let actual_length = if length > 100 { 100 } else { length };
-        let mut hash = String::with_capacity(actual_length);
+        let length = 100;
+        let mut hash = String::with_capacity(length);
         let mut thread = rng();
-        for _ in 0..actual_length {
+        for _ in 0..length {
             let index = thread.random_range(0..CHARS.len());
             hash.push(CHARS[index] as char);
         }

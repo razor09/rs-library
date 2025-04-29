@@ -38,7 +38,7 @@ async fn sign_in(data: Data<State>, payload: Json<SignIn>) -> impl Responder {
                         return success_json!(token);
                     },
                     |user_id| {
-                        let hash = Token::generate_hash(100);
+                        let hash = Token::generate_hash();
                         return lock_db_connection(&data)
                             .and_then(|guard| {
                                 return guard
