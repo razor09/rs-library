@@ -2,6 +2,7 @@ use crate::{
     constants::{
         authorization::{AuthorizationMessages, AuthorizationValidation},
         error::ErrorMessages,
+        headers::Headers,
     },
     database::{adapter::lock_db_connection, tokens::SELECT_TOKEN},
     internal_server_error,
@@ -15,7 +16,7 @@ use rusqlite::{params, OptionalExtension};
 fn extract_credentials(request: &HttpRequest) -> Option<(u32, &str)> {
     return request
         .headers()
-        .get("authorization")
+        .get(Headers::AUTHORIZATION)
         .and_then(|header| header.to_str().ok())
         .and_then(|token| {
             let pattern = Regex::new(AuthorizationValidation::TOKEN_PATTERN).expect(ErrorMessages::CREATE_REGEXP);

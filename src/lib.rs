@@ -1,6 +1,7 @@
 pub mod constants {
     pub mod authorization;
     pub mod error;
+    pub mod headers;
     pub mod users;
 }
 
